@@ -5,7 +5,7 @@ a = Analysis(
     ['launcher.py'],
     pathex=[],
     binaries=[],
-    datas=[('.env', '.'), ('app', 'app')],
+    datas=[('.env', '.'), ('app', 'app'), ('../blanchero_precios_propuesta.html', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

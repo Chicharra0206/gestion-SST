@@ -21,6 +21,14 @@ def get_frontend_path() -> str:
     return os.path.join(base, "dashboard-hqse.html")
 
 
+def get_precios_path() -> str:
+    if getattr(sys, 'frozen', False):
+        base = os.path.dirname(sys.executable)
+    else:
+        base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base, "blanchero_precios_propuesta.html")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=engine)
@@ -41,6 +49,12 @@ app.add_middleware(
 @app.get("/app")
 def serve_frontend():
     path = get_frontend_path()
+    return FileResponse(path, media_type="text/html")
+
+
+@app.get("/precios")
+def serve_precios():
+    path = get_precios_path()
     return FileResponse(path, media_type="text/html")
 
 
