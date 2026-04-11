@@ -13,20 +13,15 @@ from .models import Company
 from .schemas import CompanyBulkUpsert, CompanyListResponse, CompanyPayload, CompanyResponse, HealthResponse
 
 
+def _base_dir() -> str:
+    if getattr(sys, 'frozen', False):
+        return os.path.dirname(sys.executable)
+    # dev / cloud: sirve desde backend/static/
+    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "static")
+
+
 def get_frontend_path() -> str:
-    if getattr(sys, 'frozen', False):
-        base = os.path.dirname(sys.executable)
-    else:
-        base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base, "dashboard-hqse.html")
-
-
-def get_precios_path() -> str:
-    if getattr(sys, 'frozen', False):
-        base = os.path.dirname(sys.executable)
-    else:
-        base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base, "blanchero_precios_propuesta.html")
+    return os.path.join(_base_dir(), "dashboard-hqse.html")
 
 
 @asynccontextmanager
@@ -49,12 +44,6 @@ app.add_middleware(
 @app.get("/app")
 def serve_frontend():
     path = get_frontend_path()
-    return FileResponse(path, media_type="text/html")
-
-
-@app.get("/precios")
-def serve_precios():
-    path = get_precios_path()
     return FileResponse(path, media_type="text/html")
 
 
