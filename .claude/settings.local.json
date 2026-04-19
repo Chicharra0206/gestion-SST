@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8000/precios)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(grep -c '`' /c/Users/crist/Downloads/blanchero_precios_propuesta.html)",
+      "Bash(grep -c '`' /c/Users/crist/Downloads/blanchero_formulas_srt_v2_fixed.html)",
+      "Bash(grep -c '\\\\${' /c/Users/crist/Downloads/blanchero_precios_propuesta.html)",
+      "Bash(grep -c '\\\\${' /c/Users/crist/Downloads/blanchero_formulas_srt_v2_fixed.html)",
+      "Bash(python3)",
+      "Bash(python3 embed_tools.py)",
+      "Bash(taskkill //PID 8 //F)",
+      "Bash(netstat -ano)",
+      "Bash(\"./Dashboard HQSE Debug.exe\")",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(curl -s http://127.0.0.1:8000/api/health)",
+      "Bash(echo \"HTTP: $?\")",
+      "Bash(taskkill //PID 13168 //F)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8000/app)",
+      "Bash(curl -s http://127.0.0.1:8000/app)",
+      "Bash(python3 fix_script_tags.py)",
+      "Bash(mkdir -p /c/Users/crist/OneDrive/Documentos/Consultora/backend/static)",
+      "Bash(cp /c/Users/crist/OneDrive/Documentos/Consultora/dashboard-hqse.html /c/Users/crist/OneDrive/Documentos/Consultora/backend/static/dashboard-hqse.html)"
+    ]
+  }
+}
